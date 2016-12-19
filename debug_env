@@ -1,8 +1,8 @@
 #!/bin/bash
-
-LOGFILE=/dev/null
+source ./read_configs
+logfile=$(read_configs "debug" "logfile")
 
 debug(){
 	dt=$(date +"%Y.%m.%d %X")
-	echo "[$dt] ($(basename $0)): $@" | tee -a ${LOGFILE}
+	echo "[$dt] ($(basename $0)): $@" | tee -a ${logfile}
 }
