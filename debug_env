@@ -1,8 +1,10 @@
 #!/bin/bash
-source ./read_configs
-logfile=$(read_configs "debug" "logfile")
+
+pkg_home=$(dirname $(realpath $0))
+source ${pkg_home}/read_configs
+logfile=$(realpath $(read_configs "debug" "logfile"))
 
 debug(){
 	dt=$(date +"%Y.%m.%d %X")
-	echo "[$dt] ($(basename $0)): $@" | tee -a ${logfile}
+	echo "[$dt] ($(dirname $0) $(basename $0)): $@" | tee -a ${logfile}
 }

@@ -1,9 +1,10 @@
 #!/bin/bash
 
+pkg_home=$(dirname $(realpath $0))
 read_configs(){
 	cfg_file=$1.config
 	cfg_key=$2
-	[ ! -f "./${cfg_file}" ] && return
+	[ ! -f "${pkg_home}/${cfg_file}" ] && return
 	[ -z "${cfg_key}" ] && return
 	awk -F"=" "/${cfg_key}/ { print \$2 }" ${cfg_file}
 
